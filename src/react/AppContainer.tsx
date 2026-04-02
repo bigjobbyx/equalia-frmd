@@ -21,73 +21,64 @@ export const AppContainer: React.FC = () => {
   return (
     <Grid
       container
-      sx={{ position: "relative", height: "100%" }}
+      sx={{
+        minHeight: "100dvh",
+        flexDirection: { xs: "column", md: "row" },
+        flexWrap: "nowrap",
+      }}
     >
-      <Grid sx={{ minWidth: "50px" }}>
+      <Grid
+        sx={{
+          width: { xs: "100%", md: "auto" },
+          minWidth: { md: "50px" },
+          zIndex: 10,
+        }}
+      >
         <Sidebar />
       </Grid>
+
       <Grid
         xs
-        sx={{ height: "100%" }}
+        sx={{
+          minWidth: 0,
+          width: "100%",
+        }}
       >
-        <Box>
-          <ConnectionChecker>
-            <Routes>
-              <Route
-                path="/"
-                element={<Start />}
-              />
-              <Route
-                path="/power"
-                element={<PowerMain />}
-              />
-              <Route
-                path="/generator"
-                element={<DetailedGeneratorView />}
-              />
-              <Route
-                path="/production"
-                element={<FactorysSwitch />}
-              />
-              <Route
-                path="/factory"
-                element={<DetailedFactoryView />}
-              />
-              <Route
-                path="/vehicles"
-                element={<Vehicles />}
-              />
-              <Route
-                path="/drones"
-                element={<Drones />}
-              />
-              <Route
-                path="/trains"
-                element={<Trains />}
-              />
-              <Route
-                path="/storageView"
-                element={<StorageView />}
-              />
-              <Route
-                path="/awesomeSink"
-                element={<AwesomeSink />}
-              />
-              <Route
-                path="/settings"
-                element={<Settings />}
-              />
-              <Route
-                path="*"
-                element={
-                  <Navigate
-                    to="/"
-                    replace
-                  />
-                }
-              />
-            </Routes>
-          </ConnectionChecker>
+        <Box
+          sx={{
+            minHeight: "100dvh",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Box
+            sx={{
+              flex: 1,
+              px: { xs: 1, sm: 2 },
+              pb: { xs: 2, md: 0 },
+            }}
+          >
+            <ConnectionChecker>
+              <Routes>
+                <Route path="/" element={<Start />} />
+                <Route path="/power" element={<PowerMain />} />
+                <Route path="/generator" element={<DetailedGeneratorView />} />
+                <Route path="/production" element={<FactorysSwitch />} />
+                <Route path="/factory" element={<DetailedFactoryView />} />
+                <Route path="/vehicles" element={<Vehicles />} />
+                <Route path="/drones" element={<Drones />} />
+                <Route path="/trains" element={<Trains />} />
+                <Route path="/storageView" element={<StorageView />} />
+                <Route path="/awesomeSink" element={<AwesomeSink />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route
+                  path="*"
+                  element={<Navigate to="/" replace />}
+                />
+              </Routes>
+            </ConnectionChecker>
+          </Box>
+
           <Footer />
         </Box>
       </Grid>

@@ -25,7 +25,13 @@ export const FactorysSwitch: React.FC = () => {
   );
 
   return (
-    <Container sx={{ paddingTop: "50px" }}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        pt: { xs: 2, sm: 5 },
+        px: { xs: 1, sm: 2 },
+      }}
+    >
       <Card
         variant="outlined"
         sx={{ marginBottom: "30px" }}
@@ -41,6 +47,7 @@ export const FactorysSwitch: React.FC = () => {
                 level="h2"
                 marginBottom="5px"
                 fontWeight={600}
+                sx={{ fontSize: { xs: "1.75rem", sm: "2.4rem" } }}
               >
                 Available Factories
               </Typography>

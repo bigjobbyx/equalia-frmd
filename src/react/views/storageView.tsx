@@ -61,7 +61,13 @@ export const StorageView: React.FC = () => {
   }, [handlePrepareItems]);
 
   return (
-    <Container sx={{ paddingTop: "50px" }}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        pt: { xs: 2, sm: 5 },
+        px: { xs: 1, sm: 2 },
+      }}
+    >
       <Card
         variant="outlined"
         sx={{ paddingBottom: "0px", marginBottom: "30px" }}
@@ -77,6 +83,7 @@ export const StorageView: React.FC = () => {
               <Typography
                 level="h2"
                 fontWeight={600}
+                sx={{ fontSize: { xs: "1.75rem", sm: "2.4rem" } }}
               >
                 All Items in World
               </Typography>
@@ -84,6 +91,7 @@ export const StorageView: React.FC = () => {
           </Grid>
         </CardContent>
       </Card>
+
       {items ? (
         <Grid
           container
@@ -94,12 +102,15 @@ export const StorageView: React.FC = () => {
           {items.map((item) => {
             return (
               <Grid
-                xs={4}
+                xs={6}
+                sm={4}
+                md={3}
                 key={item.className}
               >
                 <Card
                   variant="outlined"
                   sx={{
+                    height: "100%",
                     padding: "3px",
                     borderColor:
                       Math.floor(item.currentConsumption) >
@@ -118,24 +129,32 @@ export const StorageView: React.FC = () => {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
+                      justifyContent: "center",
                       padding: "16px",
+                      textAlign: "center",
+                      height: "100%",
                     }}
                   >
                     {gameItemsDictionnary[item.className] !== undefined && (
                       <img
                         src={getImageHelper(item.className) ?? null}
                         alt="Satisfactory item illustration"
-                        style={{ height: "70px", width: "70px" }}
+                        style={{ height: "64px", width: "64px" }}
                       />
                     )}
                     {gameItemsDictionnary[item.className] === undefined && (
-                      <HiOutlineQuestionMarkCircle size="70px" />
+                      <HiOutlineQuestionMarkCircle size="64px" />
                     )}
-                    <Typography marginBottom="5px">{item.name}</Typography>
+                    <Typography
+                      level="title-md"
+                      marginBottom="5px"
+                    >
+                      {item.name}
+                    </Typography>
                     <Typography level="body-md">
                       Total: {item.amount}
                     </Typography>
-                    <Typography level="body-md">
+                    <Typography level="body-sm">
                       {item.productionPerMinunte}
                     </Typography>
                   </CardContent>
@@ -150,583 +169,54 @@ export const StorageView: React.FC = () => {
           paddingY={0}
           px={0}
           spacing={2}
+          sx={{ opacity: 0.5 }}
         >
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+            <Grid
+              key={`storage-skeleton-${n}`}
+              xs={6}
+              sm={4}
+              md={3}
             >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
+              <Card
+                variant="outlined"
+                sx={{ height: "100%", padding: 0 }}
               >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid xs={4}>
-            <Card
-              variant="outlined"
-              sx={{ height: "100%", padding: 0 }}
-            >
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "16px",
-                }}
-              >
-                <Skeleton
-                  variant="circular"
-                  height="70px"
-                  width="70px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="80px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="50px"
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="text"
-                  width="150px"
-                />
-              </CardContent>
-            </Card>
-          </Grid>
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "16px",
+                    textAlign: "center",
+                    height: "100%",
+                  }}
+                >
+                  <Skeleton
+                    variant="circular"
+                    height="64px"
+                    width="64px"
+                    sx={{ marginBottom: "10px" }}
+                  />
+                  <Skeleton
+                    variant="text"
+                    width="90px"
+                    sx={{ marginBottom: "10px" }}
+                  />
+                  <Skeleton
+                    variant="text"
+                    width="60px"
+                    sx={{ marginBottom: "10px" }}
+                  />
+                  <Skeleton
+                    variant="text"
+                    width="140px"
+                  />
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       )}
     </Container>

@@ -39,7 +39,6 @@ export const Start: React.FC = () => {
   );
 
   const [editItemSelection, setEditItemSelection] = useState(false);
-
   const [tmpItemSelection, setTmpItemSelection] = useState<string[]>([]);
 
   const gameResources = objectEntriesToObjectHelper<
@@ -53,18 +52,31 @@ export const Start: React.FC = () => {
   );
 
   return (
-    <Container sx={{ paddingTop: "50px" }}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        pt: { xs: 2, sm: 5 },
+        px: { xs: 1, sm: 2 },
+      }}
+    >
       <Typography
         marginBottom="10px"
         level="h1"
+        sx={{
+          fontSize: { xs: "2rem", sm: "3rem" },
+        }}
       >
         Welcome Pioneer!
       </Typography>
+
       <Typography
-        marginBottom="50px"
+        marginBottom={{ xs: "24px", sm: "50px" }}
         level="h4"
         color="neutral"
         fontWeight={400}
+        sx={{
+          fontSize: { xs: "1rem", sm: "1.5rem" },
+        }}
       >
         Satisfactory Remote Monitoring Dashboard Version 1.0
       </Typography>
@@ -74,7 +86,7 @@ export const Start: React.FC = () => {
         container
         sx={{ height: "100%", position: "relative" }}
       >
-        <Grid xs={6}>
+        <Grid xs={12} lg={6}>
           {itemSelection && (
             <>
               <Modal
@@ -83,7 +95,11 @@ export const Start: React.FC = () => {
                   setEditItemSelection(false);
                 }}
               >
-                <ModalDialog sx={{ maxWidth: "450px" }}>
+                <ModalDialog
+                  sx={{
+                    width: "min(92vw, 450px)",
+                  }}
+                >
                   <ModalClose />
                   <Typography level="h4">Edit Favorite Items List</Typography>
 
@@ -121,6 +137,7 @@ export const Start: React.FC = () => {
                   </Button>
                 </ModalDialog>
               </Modal>
+
               <Card
                 sx={{ marginBottom: "20px" }}
                 variant="outlined"
@@ -128,9 +145,10 @@ export const Start: React.FC = () => {
                 <CardContent>
                   <Grid
                     container
-                    padding={0}
+                    spacing={2}
+                    alignItems="flex-start"
                   >
-                    <Grid xs>
+                    <Grid xs={12} sm>
                       <Typography level="h4">
                         {itemSelection.length} Favorite Items
                       </Typography>
@@ -148,8 +166,10 @@ export const Start: React.FC = () => {
                         Players Inventory is not taken into account.
                       </Typography>
                     </Grid>
-                    <Grid>
+
+                    <Grid xs={12} sm="auto">
                       <Button
+                        fullWidth
                         onClick={() => {
                           setTmpItemSelection(itemSelection);
                           setEditItemSelection(true);
@@ -164,6 +184,7 @@ export const Start: React.FC = () => {
                   </Grid>
                 </CardContent>
               </Card>
+
               {itemSelection && worldInv && (
                 <Grid
                   container
@@ -176,7 +197,9 @@ export const Start: React.FC = () => {
                       return (
                         <Grid
                           key={item.className}
-                          xs={4}
+                          xs={6}
+                          sm={4}
+                          md={3}
                         >
                           <Card
                             variant="outlined"
@@ -193,11 +216,12 @@ export const Start: React.FC = () => {
                               <img
                                 src={getImageHelper(item.className)}
                                 alt=""
-                                style={{ height: "70px", width: "70px" }}
+                                style={{ height: "64px", width: "64px" }}
                               />
                               <Typography
                                 marginBottom="5px"
                                 textAlign="center"
+                                level="title-md"
                               >
                                 {item.name}
                               </Typography>
@@ -213,6 +237,7 @@ export const Start: React.FC = () => {
                   })}
                 </Grid>
               )}
+
               {itemSelection && !worldInv && (
                 <Grid
                   container
@@ -221,144 +246,52 @@ export const Start: React.FC = () => {
                   spacing={2}
                   sx={{ opacity: 0.5 }}
                 >
-                  <Grid xs={4}>
-                    <Card
-                      variant="outlined"
-                      sx={{ height: "100%", padding: 0 }}
+                  {[1, 2, 3, 4].map((n) => (
+                    <Grid
+                      key={n}
+                      xs={6}
+                      sm={4}
+                      md={3}
                     >
-                      <CardContent
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          padding: "16px",
-                        }}
+                      <Card
+                        variant="outlined"
+                        sx={{ height: "100%", padding: 0 }}
                       >
-                        <Skeleton
-                          variant="circular"
-                          sx={{}}
-                          width="70px"
-                          height="70px"
-                        />
+                        <CardContent
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            padding: "16px",
+                          }}
+                        >
+                          <Skeleton
+                            variant="circular"
+                            width="64px"
+                            height="64px"
+                          />
 
-                        <Skeleton
-                          variant="rectangular"
-                          sx={{ marginTop: "20px", marginBottom: "10px" }}
-                          width="120px"
-                          height="20px"
-                        />
-                        <Skeleton
-                          variant="text"
-                          width="60px"
-                        />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid xs={4}>
-                    <Card
-                      variant="outlined"
-                      sx={{ height: "100%", padding: 0 }}
-                    >
-                      <CardContent
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          padding: "16px",
-                        }}
-                      >
-                        <Skeleton
-                          variant="circular"
-                          sx={{}}
-                          width="70px"
-                          height="70px"
-                        />
-
-                        <Skeleton
-                          variant="rectangular"
-                          sx={{ marginTop: "20px", marginBottom: "10px" }}
-                          width="120px"
-                          height="20px"
-                        />
-                        <Skeleton
-                          variant="text"
-                          width="60px"
-                        />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid xs={4}>
-                    <Card
-                      variant="outlined"
-                      sx={{ height: "100%", padding: 0 }}
-                    >
-                      <CardContent
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          padding: "16px",
-                        }}
-                      >
-                        <Skeleton
-                          variant="circular"
-                          sx={{}}
-                          width="70px"
-                          height="70px"
-                        />
-
-                        <Skeleton
-                          variant="rectangular"
-                          sx={{ marginTop: "20px", marginBottom: "10px" }}
-                          width="120px"
-                          height="20px"
-                        />
-                        <Skeleton
-                          variant="text"
-                          width="60px"
-                        />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid xs={4}>
-                    <Card
-                      variant="outlined"
-                      sx={{ height: "100%", padding: 0 }}
-                    >
-                      <CardContent
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          padding: "16px",
-                        }}
-                      >
-                        <Skeleton
-                          variant="circular"
-                          sx={{}}
-                          width="70px"
-                          height="70px"
-                        />
-
-                        <Skeleton
-                          variant="rectangular"
-                          sx={{ marginTop: "20px", marginBottom: "10px" }}
-                          width="120px"
-                          height="20px"
-                        />
-                        <Skeleton
-                          variant="text"
-                          width="60px"
-                        />
-                      </CardContent>
-                    </Card>
-                  </Grid>
+                          <Skeleton
+                            variant="rectangular"
+                            sx={{ marginTop: "20px", marginBottom: "10px" }}
+                            width="120px"
+                            height="20px"
+                          />
+                          <Skeleton
+                            variant="text"
+                            width="60px"
+                          />
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  ))}
                 </Grid>
               )}
             </>
           )}
         </Grid>
-        <Grid xs={6}>
+
+        <Grid xs={12} lg={6}>
           <AwesomeSink />
         </Grid>
       </Grid>

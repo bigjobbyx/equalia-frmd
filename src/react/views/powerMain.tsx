@@ -47,6 +47,7 @@ export const PowerMain: React.FC = () => {
   let allProduction = 0;
   let allBatteryCapacity = 0;
   let fuseBroken = false;
+
   if (power) {
     power.forEach((element) => {
       allCapacity += element.powerCapacity;
@@ -59,10 +60,16 @@ export const PowerMain: React.FC = () => {
   }
 
   return (
-    <Container sx={{ paddingTop: "50px" }}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        pt: { xs: 2, sm: 5 },
+        px: { xs: 1, sm: 2 },
+      }}
+    >
       <Card
         variant="outlined"
-        sx={{ marginBottom: "30px" }}
+        sx={{ marginBottom: "20px" }}
       >
         <CardContent>
           <Grid
@@ -75,6 +82,7 @@ export const PowerMain: React.FC = () => {
                 level="h2"
                 marginBottom="5px"
                 fontWeight={600}
+                sx={{ fontSize: { xs: "1.75rem", sm: "2.4rem" } }}
               >
                 All Power
               </Typography>
@@ -90,14 +98,15 @@ export const PowerMain: React.FC = () => {
           </Grid>
         </CardContent>
       </Card>
+
       <Card
         variant="outlined"
-        sx={{ marginBottom: "30px" }}
+        sx={{ marginBottom: "20px" }}
       >
         <CardContent>
           <Card
             variant="outlined"
-            sx={{ marginBottom: "30px" }}
+            sx={{ marginBottom: "20px" }}
           >
             <CardContent>
               <Grid
@@ -110,6 +119,7 @@ export const PowerMain: React.FC = () => {
                     level="h3"
                     marginBottom="5px"
                     fontWeight={600}
+                    sx={{ fontSize: { xs: "1.25rem", sm: "1.75rem" } }}
                   >
                     Power Generators
                   </Typography>
@@ -117,6 +127,7 @@ export const PowerMain: React.FC = () => {
               </Grid>
             </CardContent>
           </Card>
+
           <Grid
             container
             spacing={2}
@@ -134,126 +145,129 @@ export const PowerMain: React.FC = () => {
           </Grid>
         </CardContent>
       </Card>
+
       <Grid
         container
         spacing={2}
-        sx={{ marginBottom: "30px" }}
+        sx={{ marginBottom: "20px" }}
       >
-        <Grid xs>
-          <Card>
-            <Typography level="h3">
-              {!power ? (
-                <Skeleton
-                  sx={{ marginBottom: "8px" }}
-                  variant="rectangular"
-                  height="30px"
-                  width="80px"
-                />
-              ) : (
-                <>
-                  {new Intl.NumberFormat("en-GB", {
-                    style: "decimal",
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }).format(allCapacity)}{" "}
-                  MW
-                </>
-              )}
-            </Typography>
-            <Typography>Total Power Capacity</Typography>
+        <Grid xs={6} md={3}>
+          <Card sx={{ height: "100%" }}>
+            <CardContent>
+              <Typography level="h3">
+                {!power ? (
+                  <Skeleton
+                    sx={{ marginBottom: "8px" }}
+                    variant="rectangular"
+                    height="30px"
+                    width="80px"
+                  />
+                ) : (
+                  <>
+                    {new Intl.NumberFormat("en-GB", {
+                      style: "decimal",
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }).format(allCapacity)}{" "}
+                    MW
+                  </>
+                )}
+              </Typography>
+              <Typography>Total Capacity</Typography>
+            </CardContent>
           </Card>
         </Grid>
-        <Grid xs>
-          <Card>
-            <Typography level="h3">
-              {!power ? (
-                <Skeleton
-                  sx={{ marginBottom: "8px" }}
-                  variant="rectangular"
-                  height="30px"
-                  width="80px"
-                />
-              ) : (
-                <>
-                  {new Intl.NumberFormat("en-GB", {
-                    style: "decimal",
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }).format(allProduction)}{" "}
-                  MW
-                </>
-              )}
-            </Typography>
-            <Typography>Total Production</Typography>
+
+        <Grid xs={6} md={3}>
+          <Card sx={{ height: "100%" }}>
+            <CardContent>
+              <Typography level="h3">
+                {!power ? (
+                  <Skeleton
+                    sx={{ marginBottom: "8px" }}
+                    variant="rectangular"
+                    height="30px"
+                    width="80px"
+                  />
+                ) : (
+                  <>
+                    {new Intl.NumberFormat("en-GB", {
+                      style: "decimal",
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }).format(allProduction)}{" "}
+                    MW
+                  </>
+                )}
+              </Typography>
+              <Typography>Total Production</Typography>
+            </CardContent>
           </Card>
         </Grid>
-        <Grid xs>
-          <Card>
-            <Typography level="h3">
-              {/* {!power ? (
-                <Skeleton
-                  sx={{ marginBottom: "8px" }}
-                  variant="rectangular"
-                  height="30px"
-                  width="80px"
-                />
-              ) : (
-                <>{allBatteryCapacity.toFixed(2)} MW</>
-              )} */}
-              {!power ? (
-                <Skeleton
-                  sx={{ marginBottom: "8px" }}
-                  variant="rectangular"
-                  height="30px"
-                  width="80px"
-                />
-              ) : (
-                <>
-                  {new Intl.NumberFormat("en-US", {
-                    style: "decimal",
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }).format(allBatteryCapacity)}{" "}
-                  MWh
-                </>
-              )}
-            </Typography>
-            <Typography>Battery Capacity</Typography>
+
+        <Grid xs={6} md={3}>
+          <Card sx={{ height: "100%" }}>
+            <CardContent>
+              <Typography level="h3">
+                {!power ? (
+                  <Skeleton
+                    sx={{ marginBottom: "8px" }}
+                    variant="rectangular"
+                    height="30px"
+                    width="80px"
+                  />
+                ) : (
+                  <>
+                    {new Intl.NumberFormat("en-US", {
+                      style: "decimal",
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }).format(allBatteryCapacity)}{" "}
+                    MWh
+                  </>
+                )}
+              </Typography>
+              <Typography>Battery Capacity</Typography>
+            </CardContent>
           </Card>
         </Grid>
-        <Grid xs>
+
+        <Grid xs={6} md={3}>
           {!power && (
             <Skeleton
               sx={{ marginBottom: "8px", width: "100%", borderRadius: "10px" }}
               variant="rectangular"
-              height="93px"
+              height="100%"
             />
           )}
           {!!power && !fuseBroken && (
-            <Card>
-              {/* <Typography level="body-lg">All Good</Typography>
-              <Typography level="body-sm">Fuse Status</Typography> */}
-              <Typography level="h3">No Problems</Typography>
-              <Typography>Current Status</Typography>
+            <Card sx={{ height: "100%" }}>
+              <CardContent>
+                <Typography level="h3">No Problems</Typography>
+                <Typography>Current Status</Typography>
+              </CardContent>
             </Card>
           )}
           {!!power && fuseBroken && (
-            <Card>
-              {/* <Typography level="body-lg">Broken!</Typography>
-              <Typography level="body-sm">Fuse Status</Typography> */}
-              <Typography level="h3">Fuse Broken!</Typography>
-              <Typography>Current Status</Typography>
+            <Card sx={{ height: "100%" }}>
+              <CardContent>
+                <Typography level="h3">Fuse Broken!</Typography>
+                <Typography>Current Status</Typography>
+              </CardContent>
             </Card>
           )}
         </Grid>
       </Grid>
-      <Divider sx={{ marginBottom: "50px" }} />
+
+      <Divider sx={{ marginBottom: "30px" }} />
+
       <Typography
         level="h4"
-        sx={{ marginTop: "30px", marginBottom: "30px" }}
+        sx={{ marginTop: "20px", marginBottom: "20px" }}
       >
         All Power Circuits
       </Typography>
+
       {power ? (
         <>
           {power.map((powerGroup, index: number) => {
@@ -262,19 +276,19 @@ export const PowerMain: React.FC = () => {
                 key={powerGroup.id}
                 variant="outlined"
                 sx={{
-                  marginBottom: "30px",
-                  padding: "20px",
-                  backgroundColor: powerGroup.fuseTriggered
-                    ? "var(--joy-palette-background-surface)"
-                    : "var(--joy-palette-background-surface)",
+                  marginBottom: "20px",
+                  padding: { xs: "12px", sm: "20px" },
+                  backgroundColor: "var(--joy-palette-background-surface)",
                 }}
               >
                 <CardContent>
                   <Grid
                     container
+                    spacing={1.5}
                     sx={{ marginBottom: "20px" }}
+                    alignItems="center"
                   >
-                    <Grid xs>
+                    <Grid xs={12} sm>
                       <Box
                         sx={{
                           display: "flex",
@@ -293,7 +307,8 @@ export const PowerMain: React.FC = () => {
                         </Typography>
                       </Box>
                     </Grid>
-                    <Grid>
+
+                    <Grid xs={12} sm="auto">
                       {powerGroup.fuseTriggered ? (
                         <Chip
                           variant="soft"
@@ -317,84 +332,99 @@ export const PowerMain: React.FC = () => {
                       )}
                     </Grid>
                   </Grid>
+
                   <Grid
                     container
                     spacing={2}
                   >
-                    <Grid xs>
-                      <Card variant="outlined">
-                        <Typography level="h4">
-                          {new Intl.NumberFormat("en-US", {
-                            style: "decimal",
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          }).format(powerGroup.powerCapacity)}{" "}
-                          MW
-                        </Typography>
-                        <Typography level="body-md">Power Capacity</Typography>
-                      </Card>
-                    </Grid>
-                    <Grid xs>
+                    <Grid xs={6} md={3}>
                       <Card
                         variant="outlined"
-                        sx={{
-                          backgroundColor:
-                            powerGroup.powerProduction === 0
-                              ? "var(--joy-palette-background-surface)"
-                              : "var(--joy-palette-background-surface)",
-                        }}
+                        sx={{ height: "100%" }}
                       >
-                        <Typography level="h4">
-                          {new Intl.NumberFormat("en-US", {
-                            style: "decimal",
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          }).format(powerGroup.powerProduction)}{" "}
-                          MW
-                        </Typography>
-                        <Typography level="body-md">
-                          Power Production
-                        </Typography>
+                        <CardContent>
+                          <Typography level="h4">
+                            {new Intl.NumberFormat("en-US", {
+                              style: "decimal",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            }).format(powerGroup.powerCapacity)}{" "}
+                            MW
+                          </Typography>
+                          <Typography level="body-md">Capacity</Typography>
+                        </CardContent>
                       </Card>
                     </Grid>
-                    <Grid xs>
-                      <Card variant="outlined">
-                        <Typography level="h4">
-                          {new Intl.NumberFormat("en-US", {
-                            style: "decimal",
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          }).format(powerGroup.powerConsumed)}{" "}
-                          MW
-                        </Typography>
-                        <Typography level="body-md">
-                          Current consumption
-                        </Typography>
+
+                    <Grid xs={6} md={3}>
+                      <Card
+                        variant="outlined"
+                        sx={{ height: "100%" }}
+                      >
+                        <CardContent>
+                          <Typography level="h4">
+                            {new Intl.NumberFormat("en-US", {
+                              style: "decimal",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            }).format(powerGroup.powerProduction)}{" "}
+                            MW
+                          </Typography>
+                          <Typography level="body-md">Production</Typography>
+                        </CardContent>
                       </Card>
                     </Grid>
-                    <Grid xs>
-                      <Card variant="outlined">
-                        <Typography level="h4">
-                          {new Intl.NumberFormat("en-US", {
-                            style: "decimal",
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          }).format(powerGroup.powerMaxConsumed)}{" "}
-                          MW
-                        </Typography>
-                        <Typography level="body-md">Max. Consumed</Typography>
+
+                    <Grid xs={6} md={3}>
+                      <Card
+                        variant="outlined"
+                        sx={{ height: "100%" }}
+                      >
+                        <CardContent>
+                          <Typography level="h4">
+                            {new Intl.NumberFormat("en-US", {
+                              style: "decimal",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            }).format(powerGroup.powerConsumed)}{" "}
+                            MW
+                          </Typography>
+                          <Typography level="body-md">Consumption</Typography>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+
+                    <Grid xs={6} md={3}>
+                      <Card
+                        variant="outlined"
+                        sx={{ height: "100%" }}
+                      >
+                        <CardContent>
+                          <Typography level="h4">
+                            {new Intl.NumberFormat("en-US", {
+                              style: "decimal",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            }).format(powerGroup.powerMaxConsumed)}{" "}
+                            MW
+                          </Typography>
+                          <Typography level="body-md">Max Used</Typography>
+                        </CardContent>
                       </Card>
                     </Grid>
                   </Grid>
 
                   <Grid
                     container
-                    sx={{ marginTop: "30px" }}
+                    spacing={1.5}
+                    sx={{ marginTop: "24px" }}
+                    alignItems="center"
                   >
-                    <Grid xs>
+                    <Grid xs={12} sm>
                       <Typography level="h4">Battery</Typography>
                     </Grid>
-                    <Grid>
+
+                    <Grid xs={12} sm="auto">
                       {powerGroup.batteryCapacity === 0 ? (
                         <Chip
                           startDecorator={<BsCloudSlash size="20px" />}
@@ -415,49 +445,69 @@ export const PowerMain: React.FC = () => {
                       )}
                     </Grid>
                   </Grid>
-                  {powerGroup.batteryCapacity != 0 && (
-                      <Grid
-                        container
-                        spacing={2}
-                        sx={{ marginTop: "20px" }}
-                      >
-                        <Grid xs>
-                          <Card variant="outlined">
+
+                  {powerGroup.batteryCapacity !== 0 && (
+                    <Grid
+                      container
+                      spacing={2}
+                      sx={{ marginTop: "20px" }}
+                    >
+                      <Grid xs={6} md={3}>
+                        <Card
+                          variant="outlined"
+                          sx={{ height: "100%" }}
+                        >
+                          <CardContent>
                             <Typography level="h4">
                               {powerGroup.batteryCapacity} MWh
                             </Typography>
                             <Typography level="body-md">
-                              Battery Capacity
+                              Capacity
                             </Typography>
-                          </Card>
-                        </Grid>
-                        <Grid xs>
-                          <Card variant="outlined">
+                          </CardContent>
+                        </Card>
+                      </Grid>
+
+                      <Grid xs={6} md={3}>
+                        <Card
+                          variant="outlined"
+                          sx={{ height: "100%" }}
+                        >
+                          <CardContent>
                             <Typography level="h4">
-                              {Math.round(powerGroup.batteryPercent * 100) /
-                                100}{" "}
-                              %
+                              {Math.round(powerGroup.batteryPercent * 100) / 100} %
                             </Typography>
                             <Typography level="body-md">
-                              Battery Filled Percent
+                              Filled
                             </Typography>
-                          </Card>
-                        </Grid>
-                        <Grid xs>
-                          <Card variant="outlined">
+                          </CardContent>
+                        </Card>
+                      </Grid>
+
+                      <Grid xs={6} md={3}>
+                        <Card
+                          variant="outlined"
+                          sx={{ height: "100%" }}
+                        >
+                          <CardContent>
                             <Typography level="h4">
-                              {Math.round(
-                                powerGroup.batteryDifferential * 100,
-                              ) / 100}{" "}
+                              {Math.round(powerGroup.batteryDifferential * 100) /
+                                100}{" "}
                               MW
                             </Typography>
                             <Typography level="body-md">
-                              Battery Differential
+                              Differential
                             </Typography>
-                          </Card>
-                        </Grid>
-                        <Grid xs>
-                          <Card variant="outlined">
+                          </CardContent>
+                        </Card>
+                      </Grid>
+
+                      <Grid xs={6} md={3}>
+                        <Card
+                          variant="outlined"
+                          sx={{ height: "100%" }}
+                        >
+                          <CardContent>
                             <Typography level="h4">
                               {powerGroup.batteryTimeEmpty !== "00:00:00"
                                 ? powerGroup.batteryTimeEmpty
@@ -465,20 +515,21 @@ export const PowerMain: React.FC = () => {
                             </Typography>
                             <Typography level="body-md">
                               {powerGroup.batteryTimeEmpty !== "00:00:00"
-                                ? "Battery Empty At Time"
-                                : "Battery Full At Time"}
+                                ? "Empty At"
+                                : "Full At"}
                             </Typography>
-                          </Card>
-                        </Grid>
+                          </CardContent>
+                        </Card>
                       </Grid>
-                    )}
+                    </Grid>
+                  )}
                 </CardContent>
               </Card>
             );
           })}
         </>
       ) : (
-        <Card sx={{ marginBottom: "30px", padding: "20px", opacity: 0.5 }}>
+        <Card sx={{ marginBottom: "20px", padding: "20px", opacity: 0.5 }}>
           <CardContent>
             <Grid
               container
@@ -505,72 +556,84 @@ export const PowerMain: React.FC = () => {
                 />
               </Grid>
             </Grid>
+
             <Grid
               container
               spacing={2}
             >
-              <Grid xs>
+              <Grid xs={6} md={3}>
                 <Card variant="outlined">
-                  <Typography level="h4">
-                    <Skeleton
-                      variant="text"
-                      width="110px"
-                    />
-                  </Typography>
-                  <Typography
-                    marginTop="10px"
-                    level="body-md"
-                  >
-                    Power Capacity
-                  </Typography>
+                  <CardContent>
+                    <Typography level="h4">
+                      <Skeleton
+                        variant="text"
+                        width="110px"
+                      />
+                    </Typography>
+                    <Typography
+                      marginTop="10px"
+                      level="body-md"
+                    >
+                      Power Capacity
+                    </Typography>
+                  </CardContent>
                 </Card>
               </Grid>
-              <Grid xs>
+
+              <Grid xs={6} md={3}>
                 <Card variant="outlined">
-                  <Typography level="h4">
-                    <Skeleton
-                      variant="text"
-                      width="80px"
-                    />
-                  </Typography>
-                  <Typography
-                    marginTop="10px"
-                    level="body-md"
-                  >
-                    Power Production
-                  </Typography>
+                  <CardContent>
+                    <Typography level="h4">
+                      <Skeleton
+                        variant="text"
+                        width="80px"
+                      />
+                    </Typography>
+                    <Typography
+                      marginTop="10px"
+                      level="body-md"
+                    >
+                      Power Production
+                    </Typography>
+                  </CardContent>
                 </Card>
               </Grid>
-              <Grid xs>
+
+              <Grid xs={6} md={3}>
                 <Card variant="outlined">
-                  <Typography level="h4">
-                    <Skeleton
-                      variant="text"
-                      width="90px"
-                    />
-                  </Typography>
-                  <Typography
-                    marginTop="10px"
-                    level="body-md"
-                  >
-                    Current consumption
-                  </Typography>
+                  <CardContent>
+                    <Typography level="h4">
+                      <Skeleton
+                        variant="text"
+                        width="90px"
+                      />
+                    </Typography>
+                    <Typography
+                      marginTop="10px"
+                      level="body-md"
+                    >
+                      Current consumption
+                    </Typography>
+                  </CardContent>
                 </Card>
               </Grid>
-              <Grid xs>
+
+              <Grid xs={6} md={3}>
                 <Card variant="outlined">
-                  <Typography level="h4">
-                    <Skeleton
-                      variant="text"
-                      width="80px"
-                    />
-                  </Typography>
-                  <Typography
-                    marginTop="10px"
-                    level="body-md"
-                  >
-                    Max. Consumed
-                  </Typography>
+                  <CardContent>
+                    <Typography level="h4">
+                      <Skeleton
+                        variant="text"
+                        width="80px"
+                      />
+                    </Typography>
+                    <Typography
+                      marginTop="10px"
+                      level="body-md"
+                    >
+                      Max. Consumed
+                    </Typography>
+                  </CardContent>
                 </Card>
               </Grid>
             </Grid>

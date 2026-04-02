@@ -20,23 +20,14 @@ export const Settings: React.FC = () => {
     useLocalStorage<SettingsData>("rmd_settings", defaultSettingsData);
 
   return (
-    <Container
-      maxWidth="xl"
-      sx={{
-        px: { xs: 1, sm: 2 },
-        py: { xs: 1, sm: 2 },
-      }}
-    >
+    <Container>
       <Card
         variant="outlined"
-        sx={{
-          mt: { xs: 2, sm: 4 },
-          mb: { xs: 2, sm: 3 },
-        }}
+        sx={{ marginTop: "40px", marginBottom: "30px" }}
       >
         <CardContent>
           <Grid container>
-            <Grid xs={12}>
+            <Grid xs>
               <Typography level="h3">Settings</Typography>
             </Grid>
           </Grid>
@@ -46,38 +37,32 @@ export const Settings: React.FC = () => {
       <Grid
         container
         spacing={2}
-        sx={{ mb: { xs: 2, sm: 3 } }}
+        sx={{ marginBottom: "30px" }}
       >
-        <Grid xs={12} md={6}>
-          <Card
-            variant="outlined"
-            sx={{ height: "100%" }}
-          >
+        <Grid xs={6}>
+          <Card variant="outlined">
             <CardContent>
               <Typography level="h4">Connection</Typography>
 
               <Input
-                sx={{ mt: "15px" }}
+                sx={{ marginTop: "15px" }}
                 value={settings.baseUrl ?? ""}
                 onChange={(e) => {
                   setSettings({ ...settings, baseUrl: e.target.value });
                 }}
-                placeholder="https://equalia.bigjobby.com/frm"
+                placeholder="https://equalia.bigjobby.com"
               />
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid xs={12} md={3}>
-          <Card
-            variant="outlined"
-            sx={{ height: "100%" }}
-          >
+        <Grid xs={3}>
+          <Card variant="outlined">
             <CardContent>
               <Typography level="h4">Data Interval Speed</Typography>
 
               <Select
-                sx={{ mt: "15px" }}
+                sx={{ marginTop: "15px" }}
                 value={settings.interval}
                 onChange={(_e, value) => {
                   setSettings({
@@ -98,11 +83,8 @@ export const Settings: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid xs={12} md={3}>
-          <Card
-            variant="outlined"
-            sx={{ height: "100%" }}
-          >
+        <Grid xs={3}>
+          <Card variant="outlined">
             <CardContent>
               <Typography level="h4">Preferences</Typography>
 

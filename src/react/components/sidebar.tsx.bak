@@ -42,7 +42,7 @@ export const Sidebar: React.FC = () => {
       },
       {
         path: "/power",
-        label: "Power",
+        label: "Power Screen",
         icon: <BsLightningFill />,
         isDisabled: false,
       },
@@ -72,13 +72,13 @@ export const Sidebar: React.FC = () => {
       },
       {
         path: "/storageView",
-        label: "Storage",
+        label: "Storage View",
         icon: <FaBoxes />,
         isDisabled: false,
       },
       {
         path: "/awesomeSink",
-        label: "Sink",
+        label: "Awesome Sink",
         icon: <RiCoupon2Fill />,
         isDisabled: false,
       },
@@ -93,114 +93,64 @@ export const Sidebar: React.FC = () => {
     ],
   ];
 
-  const flatLinks = linksGroup.flat().filter((link) => !link.isDisabled);
-
   return (
-    <>
-      <Box
-        sx={{
-          display: { xs: "block", md: "none" },
-          position: "sticky",
-          top: 0,
-          zIndex: 1200,
-          backgroundColor: "var(--joy-palette-background-surface)",
-          borderBottom: "1px solid",
-          borderColor: "divider",
-          px: 1,
-          py: 1,
-        }}
-      >
-        <Typography level="title-lg" sx={{ mb: 1 }}>
-          FRM Dashboard
-        </Typography>
-
-        <Box
-          sx={{
-            display: "flex",
-            gap: 1,
-            overflowX: "auto",
-            pb: 0.5,
-            scrollbarWidth: "thin",
-            "&::-webkit-scrollbar": {
-              height: "6px",
-            },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "rgba(255,255,255,0.2)",
-              borderRadius: "999px",
-            },
-          }}
-        >
-          {flatLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              style={{ textDecoration: "none", flex: "0 0 auto" }}
-            >
-              <Button
-                size="sm"
-                color="neutral"
-                variant="soft"
-                startDecorator={link.icon}
-                sx={{ whiteSpace: "nowrap" }}
-              >
-                {link.label}
-              </Button>
-            </Link>
-          ))}
-        </Box>
-      </Box>
-
-      <Box
-        sx={{
-          display: { xs: "none", md: "block" },
-          width: isFullsize ? "180px" : undefined,
-          height: "100dvh",
-          position: "sticky",
-          top: 0,
-          left: 0,
-          backgroundColor: "var(--joy-palette-background-surface)",
-          padding: "12px",
-        }}
-      >
-        <Stack spacing={isFullsize ? 2 : 1}>
-          {isFullsize ? (
-            <Grid container display="flex" alignItems="center">
-              <Grid marginRight="6px">
-                <IconButton
-                  onClick={() => {
-                    setIsFullsize(false);
-                  }}
-                  color="neutral"
-                  variant="plain"
-                >
-                  <BsList />
-                </IconButton>
-              </Grid>
-              <Grid xs>
-                <Typography level="h4">FRM Dashboard</Typography>
-              </Grid>
-            </Grid>
-          ) : (
-            <Tooltip placement="right" title="Expand Menu">
+    <Box
+      sx={{
+        width: isFullsize ? "180px" : undefined,
+        height: "100vh",
+        position: "sticky",
+        top: "0px",
+        bottom: "0px",
+        left: "0px",
+        backgroundColor: "var(--joy-palette-background-surface)",
+        padding: "12px",
+      }}
+    >
+      <Stack spacing={isFullsize ? 2 : 1}>
+        {isFullsize ? (
+          <Grid
+            container
+            display="flex"
+            alignItems="center"
+          >
+            <Grid marginRight="6px">
               <IconButton
-                size="lg"
                 onClick={() => {
-                  setIsFullsize(true);
+                  setIsFullsize(false);
                 }}
                 color="neutral"
                 variant="plain"
               >
                 <BsList />
               </IconButton>
-            </Tooltip>
-          )}
-
-          {linksGroup.map((group, groupIndex) => (
-            <React.Fragment key={`group-${groupIndex}`}>
+            </Grid>
+            <Grid xs>
+              <Typography level="h4">FRM Dashboard</Typography>
+            </Grid>
+          </Grid>
+        ) : (
+          <Tooltip
+            placement="right"
+            title="Expand Menu"
+          >
+            <IconButton
+              size="lg"
+              onClick={() => {
+                setIsFullsize(true);
+              }}
+              color="neutral"
+              variant="plain"
+            >
+              <BsList />
+            </IconButton>
+          </Tooltip>
+        )}
+        {linksGroup.map((group) => {
+          return (
+            <React.Fragment key={crypto.randomUUID()}>
               <Divider />
               {group.map((link) => {
                 if (link.isDisabled) return null;
-
                 if (isFullsize) {
                   return (
                     <Link
@@ -220,15 +170,21 @@ export const Sidebar: React.FC = () => {
                     </Link>
                   );
                 }
-
                 return (
                   <Tooltip
                     key={link.path}
                     placement="right"
                     title={link.label}
                   >
-                    <Link style={{ textDecoration: "none" }} to={link.path}>
-                      <IconButton size="lg" color="neutral" variant="plain">
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={link.path}
+                    >
+                      <IconButton
+                        size="lg"
+                        color="neutral"
+                        variant="plain"
+                      >
                         {link.icon}
                       </IconButton>
                     </Link>
@@ -236,9 +192,9 @@ export const Sidebar: React.FC = () => {
                 );
               })}
             </React.Fragment>
-          ))}
-        </Stack>
-      </Box>
-    </>
+          );
+        })}
+      </Stack>
+    </Box>
   );
 };

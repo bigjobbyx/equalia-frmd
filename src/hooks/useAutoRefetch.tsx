@@ -17,6 +17,7 @@ export const useAutoRefetch = <Dto, Fm>(
   const mapper = endPoint
     ? (endPointDictionnary[endPoint] as MapperFunction<Dto, Fm>)
     : undefined;
+
   const { value: settings } = useLocalStorage<SettingsData>(
     "rmd_settings",
     defaultSettingsData,
@@ -30,13 +31,22 @@ export const useAutoRefetch = <Dto, Fm>(
   useEffect(() => {
     let isMounted = true;
 
+    const resolvedBaseUrl = (
+      settings.baseUrl?.trim() ||
+      (settings.ip && settings.port
+        ? `http://${settings.ip}:${settings.port}`
+        : defaultSettingsData.baseUrl) ||
+      ""
+    ).replace(/\/+$/, "");
+
     const fetchData = async () => {
       if (isMounted && !skip && mapper) {
         const response = await fetcherHelper<Dto>({
-          apiUrl: `http://${settings.ip}:${settings.port}`,
+          apiUrl: resolvedBaseUrl,
           endPoint: `/${endPoint}`,
           method: FetchMethodsEnum.GET,
         });
+
         setResponseState({
           ...response,
           data: response.data && mapper(response.data),

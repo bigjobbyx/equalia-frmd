@@ -19,7 +19,7 @@ export const BuildingButton: React.FC<Props> = ({
   const link = `/${page}/?${page}=${factory}`;
 
   return (
-    <Grid xs={4}>
+    <Grid xs={12} sm={6} md={4}>
       <Link
         to={link}
         style={{ textDecoration: "none" }}
@@ -27,20 +27,36 @@ export const BuildingButton: React.FC<Props> = ({
         <Card
           variant="outlined"
           sx={{
+            height: "100%",
             "&:hover": {
               borderColor: "var(--joy-palette-neutral-700)",
             },
-            "cursor": "pointer",
+            cursor: "pointer",
           }}
         >
           <CardContent>
-            <Stack alignItems="center">
+            <Stack
+              alignItems="center"
+              spacing={1.5}
+            >
               <img
                 src={`/assets/${assetsLocation}/${factory}.png`}
                 alt={factory}
-                style={{ height: "70px", width: "70px" }}
+                style={{ height: "64px", width: "64px" }}
               />
-              <Typography level="h4">{`Open ${factory} Panel`}</Typography>
+              <Typography
+                level="title-md"
+                textAlign="center"
+              >
+                {factory}
+              </Typography>
+              <Typography
+                level="body-sm"
+                textAlign="center"
+                sx={{ opacity: 0.75 }}
+              >
+                Open panel
+              </Typography>
             </Stack>
           </CardContent>
         </Card>
