@@ -2,20 +2,29 @@ import { Card, CardContent, Grid, Stack, Typography } from "@mui/joy";
 import React from "react";
 import { Link } from "react-router-dom";
 
+import type { EndpointEnum } from "../../enums/endpoint.enum";
 import type { GameItemsEnum } from "../../enums/gameItems.enum";
 import type { GameItemsCategoryEnum } from "../../enums/gameItemsCategory.enum";
+import { useAutoRefetch } from "../../hooks/useAutoRefetch";
 
 type Props = {
   page: string;
   factory: GameItemsEnum;
   assetsLocation: GameItemsCategoryEnum;
+  endpoint?: EndpointEnum;
 };
 
 export const BuildingButton: React.FC<Props> = ({
   page,
   factory,
   assetsLocation,
+  endpoint,
 }) => {
+  const { data } = useAutoRefetch<unknown[], unknown[]>(endpoint, !endpoint);
+
+  // Hide if the endpoint has resolved with zero buildings in the world
+  if (endpoint && Array.isArray(data) && data.length === 0) return null;
+
   const link = `/${page}/?${page}=${factory}`;
 
   return (

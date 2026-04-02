@@ -29,6 +29,7 @@ import { useAutoRefetch } from "../../hooks/useAutoRefetch";
 import type { PowerDto } from "../../types/apis/dataTransferObject/powerDto";
 import type { PowerFm } from "../../types/apis/frontModel/powerFm";
 import type { GameItems } from "../../types/gameItems/gameItems";
+import type { GameItemGeneratorBuilding } from "../../types/gameItems/generatorBuilding";
 import { BuildingButton } from "../components/buildingButton";
 
 export const PowerMain: React.FC = () => {
@@ -139,6 +140,7 @@ export const PowerMain: React.FC = () => {
                   page="generator"
                   factory={generator.name}
                   assetsLocation={GameItemsCategoryEnum.Building}
+                  endpoint={(generator as GameItemGeneratorBuilding).endpoint}
                 />
               );
             })}

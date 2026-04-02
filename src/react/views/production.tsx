@@ -14,6 +14,7 @@ import { GameItemsCategoryEnum } from "../../enums/gameItemsCategory.enum";
 import { gameItemFilterHelper } from "../../helpers/gameItemFilter.helper";
 import { objectEntriesToArrayHelper } from "../../helpers/objectEntriesToArray.helper";
 import type { GameItems } from "../../types/gameItems/gameItems";
+import type { GameItemManufacturerBuilding } from "../../types/gameItems/manufacturerBuilding";
 import { BuildingButton } from "../components/buildingButton";
 
 export const FactorysSwitch: React.FC = () => {
@@ -75,6 +76,7 @@ export const FactorysSwitch: React.FC = () => {
               factory={factory.name}
               page="factory"
               assetsLocation={GameItemsCategoryEnum.Building}
+              endpoint={(factory as GameItemManufacturerBuilding).endpoint}
             />
           );
         })}
