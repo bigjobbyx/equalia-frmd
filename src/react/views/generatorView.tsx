@@ -51,7 +51,7 @@ export const DetailedGeneratorView: React.FC = () => {
   >(generatorEndpoint, !generatorEndpoint);
 
   return (
-    <Container sx={{ paddingTop: "50px" }}>
+    <Container maxWidth="xl" sx={{ pt: { xs: 2, sm: 5 }, px: { xs: 1, sm: 2 } }}>
       <Card
         variant="outlined"
         sx={{ marginBottom: "30px" }}
@@ -83,7 +83,9 @@ export const DetailedGeneratorView: React.FC = () => {
           {generators.map((generator) => {
             return (
               <Grid
-                xs={4}
+                xs={12}
+                sm={6}
+                md={4}
                 key={generator.id}
               >
                 <Card variant="outlined">
@@ -178,7 +180,7 @@ export const DetailedGeneratorView: React.FC = () => {
           spacing={3}
           sx={{ opacity: 0.5 }}
         >
-          <Grid xs={4}>
+          <Grid xs={12} sm={6} md={4}>
             <Card variant="outlined">
               <CardContent>
                 <Stack alignItems="center">
@@ -234,7 +236,7 @@ export const DetailedGeneratorView: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={12} sm={6} md={4}>
             <Card variant="outlined">
               <CardContent>
                 <Stack alignItems="center">
@@ -290,7 +292,7 @@ export const DetailedGeneratorView: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={12} sm={6} md={4}>
             <Card variant="outlined">
               <CardContent>
                 <Stack alignItems="center">

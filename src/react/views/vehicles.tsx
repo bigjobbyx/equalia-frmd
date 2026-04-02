@@ -25,7 +25,7 @@ export const Vehicles: React.FC = () => {
   );
 
   return (
-    <Container sx={{ paddingTop: "50px" }}>
+    <Container maxWidth="xl" sx={{ pt: { xs: 2, sm: 5 }, px: { xs: 1, sm: 2 } }}>
       <Card
         variant="outlined"
         sx={{ paddingBottom: "0px", marginBottom: "30px" }}
@@ -62,7 +62,9 @@ export const Vehicles: React.FC = () => {
               return (
                 <Grid
                   key={vehicle.id}
-                  xs={3}
+                  xs={6}
+                  sm={4}
+                  md={3}
                 >
                   <a
                     href={`#${vehicle.id}`}
@@ -156,7 +158,9 @@ export const Vehicles: React.FC = () => {
               return (
                 <Grid
                   key={vehicle.id}
-                  xs={4}
+                  xs={12}
+                  sm={6}
+                  md={4}
                 >
                   <div id={vehicle.id} />
                   <Card
