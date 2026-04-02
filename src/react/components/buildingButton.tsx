@@ -22,7 +22,10 @@ export const BuildingButton: React.FC<Props> = ({
 }) => {
   const { data } = useAutoRefetch<unknown[], unknown[]>(endpoint, !endpoint);
 
-  // Hide if the endpoint has resolved with zero buildings in the world
+  // Still loading — hide until we know whether buildings exist
+  if (endpoint && data === undefined) return null;
+
+  // Resolved with zero buildings in the world — hide
   if (endpoint && Array.isArray(data) && data.length === 0) return null;
 
   const link = `/${page}/?${page}=${factory}`;
