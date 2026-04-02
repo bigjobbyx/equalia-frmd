@@ -7,8 +7,8 @@ export const Footer: React.FC = () => {
     <Box>
       <Container sx={{ paddingBottom: "40px" }}>
         <Divider sx={{ marginTop: "40px", marginBottom: "20px" }} />
-        <Grid container>
-          <Grid xs>
+        <Grid container sx={{ flexDirection: { xs: "column", sm: "row" }, gap: { xs: 2, sm: 0 } }}>
+          <Grid xs={12} sm>
             <Typography level="body-md">
               Created with lots of ☕ by{" "}
               <Link
@@ -46,7 +46,7 @@ export const Footer: React.FC = () => {
               .
             </Typography>
           </Grid>
-          <Grid xs>
+          <Grid xs={12} sm>
             <Typography
               level="body-lg"
               marginBottom="5px"
@@ -71,9 +71,9 @@ export const Footer: React.FC = () => {
               </Link>
             </Typography>
           </Grid>
-          <Grid xs>
+          <Grid xs={12} sm>
             <Typography
-              textAlign="right"
+              textAlign={{ xs: "left", sm: "right" } as any}
               level="body-md"
             >
               Base Mod for Satisfactory:{" "}
@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
               </Link>
             </Typography>
             <Typography
-              textAlign="right"
+              textAlign={{ xs: "left", sm: "right" } as any}
               level="body-md"
             >
               Start mod with{" "}

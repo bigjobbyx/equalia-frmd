@@ -73,7 +73,7 @@ export const Drones: React.FC = () => {
   }, [handlePrepareDroneStationsStep]);
 
   return (
-    <Container sx={{ paddingTop: "50px" }}>
+    <Container maxWidth="xl" sx={{ pt: { xs: 2, sm: 5 }, px: { xs: 1, sm: 2 } }}>
       <Card
         variant="outlined"
         sx={{ marginBottom: "30px" }}
@@ -113,7 +113,8 @@ export const Drones: React.FC = () => {
                   key={drone.id}
                 >
                   <Grid
-                    xs={3}
+                    xs={6}
+                    sm={3}
                     sx={{ height: "240px" }}
                   >
                     {homeStation ? (
@@ -316,7 +317,8 @@ export const Drones: React.FC = () => {
                   </Grid>
 
                   <Grid
-                    xs={3}
+                    xs={6}
+                    sm={3}
                     sx={{ height: "240px", position: "relative" }}
                   >
                     <Card
@@ -569,7 +571,8 @@ export const Drones: React.FC = () => {
                 key={drone.id}
               >
                 <Grid
-                  xs={3}
+                  xs={6}
+                  sm={3}
                   sx={{ height: "240px" }}
                 >
                   <Card
@@ -607,7 +610,8 @@ export const Drones: React.FC = () => {
                 </Grid>
 
                 <Grid
-                  xs={3}
+                  xs={6}
+                  sm={3}
                   sx={{ height: "240px", position: "relative" }}
                 >
                   <Card
@@ -820,7 +824,8 @@ export const Drones: React.FC = () => {
           sx={{ marginBottom: "30px", height: "300px", opacity: 0.5 }}
         >
           <Grid
-            xs={3}
+            xs={6}
+            sm={3}
             sx={{ height: "240px" }}
           >
             <Card
@@ -886,7 +891,8 @@ export const Drones: React.FC = () => {
           </Grid>
 
           <Grid
-            xs={3}
+            xs={6}
+            sm={3}
             sx={{ height: "240px", position: "relative" }}
           >
             <Card

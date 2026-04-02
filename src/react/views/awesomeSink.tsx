@@ -111,7 +111,7 @@ export const AwesomeSink: React.FC = () => {
           padding={0}
           spacing={2}
         >
-          <Grid xs={4}>
+          <Grid xs={12} sm={4}>
             <Card variant="outlined">
               <CardContent>
                 <Typography level="h4">
@@ -123,7 +123,7 @@ export const AwesomeSink: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={12} sm={4}>
             <Card variant="outlined">
               <CardContent>
                 <Typography level="h4">
@@ -136,7 +136,7 @@ export const AwesomeSink: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={12} sm={4}>
             <Card variant="outlined">
               <CardContent>
                 <Typography level="h4">
@@ -218,7 +218,7 @@ export const AwesomeSink: React.FC = () => {
         sx={{ opacity: 0.5 }}
         spacing={2}
       >
-        <Grid xs={4}>
+        <Grid xs={12} sm={4}>
           <Card variant="outlined">
             <CardContent>
               <Skeleton
@@ -234,7 +234,7 @@ export const AwesomeSink: React.FC = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid xs={4}>
+        <Grid xs={12} sm={4}>
           <Card variant="outlined">
             <CardContent>
               <Skeleton
@@ -250,7 +250,7 @@ export const AwesomeSink: React.FC = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid xs={4}>
+        <Grid xs={12} sm={4}>
           <Card variant="outlined">
             <CardContent>
               <Skeleton

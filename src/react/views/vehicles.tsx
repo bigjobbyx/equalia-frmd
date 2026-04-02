@@ -368,7 +368,9 @@ export const Vehicles: React.FC = () => {
               return (
                 <Grid
                   key={vehicle.id}
-                  xs={4}
+                  xs={12}
+                  sm={6}
+                  md={4}
                 >
                   <div id={index.toString()} />
                   <Card
@@ -589,7 +591,7 @@ export const Vehicles: React.FC = () => {
             display="flex"
             alignItems="center"
           >
-            <Grid xs={3}>
+            <Grid xs={6} sm={4} md={3}>
               <Card
                 variant="outlined"
                 sx={{}}
@@ -625,7 +627,7 @@ export const Vehicles: React.FC = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid xs={3}>
+            <Grid xs={6} sm={4} md={3}>
               <Card
                 variant="outlined"
                 sx={{}}
@@ -679,7 +681,7 @@ export const Vehicles: React.FC = () => {
             display="flex"
             alignItems="center"
           >
-            <Grid xs={4}>
+            <Grid xs={12} sm={6} md={4}>
               <Card
                 sx={{ position: "relative", paddingBottom: 0 }}
                 variant="outlined"
@@ -801,7 +803,7 @@ export const Vehicles: React.FC = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid xs={4}>
+            <Grid xs={12} sm={6} md={4}>
               <Card
                 sx={{ position: "relative", paddingBottom: 0 }}
                 variant="outlined"
@@ -941,7 +943,7 @@ export const Vehicles: React.FC = () => {
             display="flex"
             alignItems="center"
           >
-            <Grid xs={4}>
+            <Grid xs={12} sm={6} md={4}>
               <Card
                 sx={{ position: "relative", paddingBottom: 0 }}
                 variant="outlined"
